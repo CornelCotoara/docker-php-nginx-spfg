@@ -49,6 +49,13 @@ USER nobody
 # Add application
 COPY --chown=nobody src/ /var/www/html/
 
+# Setup document root
+# RUN mkdir -p /var/www/html #already in
+RUN wget -O SPFG_4.10.0.zip https://sye.dk/sfpg/Single_File_PHP_Gallery_4.10.0.zip &&\
+unzip -d /var/www/html SPFG_4.10.0.zip &&\
+mkdir -p /media/gallery &&\
+ln -s /var/www/html/gallery /media/gallery
+
 # Expose the port nginx is reachable on
 EXPOSE 8080
 
