@@ -25,7 +25,8 @@ RUN apk add --no-cache \
   php81-xml \
   php81-xmlreader \
   php81-zlib \
-  supervisor
+  supervisor \
+  unzip
 
 # Create symlink so programs depending on `php` still function
 RUN ln -s /usr/bin/php81 /usr/bin/php
