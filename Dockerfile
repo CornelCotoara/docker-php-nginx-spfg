@@ -52,11 +52,11 @@ COPY --chown=nobody src/ /var/www/html/
 
 # Install SPFG
 RUN mkdir -p /var/www/html
-RUN curl --insecure -L https://sye.dk/sfpg/Single_File_PHP_Gallery_4.10.0.zip -o SPFG_4.10.0.zip && \
-# RUN wget -O SPFG_4.10.0.zip https://sye.dk/sfpg/Single_File_PHP_Gallery_4.10.0.zip && \
-unzip -d /var/www/html SPFG_4.10.0.zip && \
-mkdir -p /media/gallery && \
-ln -s /var/www/html/gallery /media/gallery
+RUN curl --insecure -L https://sye.dk/sfpg/Single_File_PHP_Gallery_4.10.0.zip -o SPFG_4.10.0.zip
+# RUN wget -O SPFG_4.10.0.zip https://sye.dk/sfpg/Single_File_PHP_Gallery_4.10.0.zip
+RUN unzip -d /var/www/html SPFG_4.10.0.zip
+RUN mkdir -p /media/gallery
+RUN ln -s /var/www/html/gallery /media/gallery
 
 # Expose the port nginx is reachable on
 EXPOSE 8080
