@@ -42,6 +42,8 @@ COPY config/php.ini /etc/php81/conf.d/custom.ini
 COPY config/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 # Make sure files/folders needed by the processes are accessable when they run under the nobody user
+RUN mkdir -p /media/gallery
+RUN ln -s /var/www/html/gallery /media/gallery
 RUN chown -R nobody.nobody /var/www/html /run /var/lib/nginx /var/log/nginx
 
 # Switch to use a non-root user from here on
@@ -55,8 +57,6 @@ RUN mkdir -p /var/www/html
 RUN curl --insecure -L https://sye.dk/sfpg/Single_File_PHP_Gallery_4.10.0.zip -o SPFG_4.10.0.zip
 # RUN wget -O SPFG_4.10.0.zip https://sye.dk/sfpg/Single_File_PHP_Gallery_4.10.0.zip
 RUN unzip -o SPFG_4.10.0.zip -d /var/www/html 
-RUN mkdir -p /media/gallery
-RUN ln -s /var/www/html/gallery /media/gallery
 
 # Expose the port nginx is reachable on
 EXPOSE 8080
