@@ -50,8 +50,8 @@ USER nobody
 COPY --chown=nobody src/ /var/www/html/
 
 # Install SPFG
-# RUN mkdir -p /var/www/html #already in place
-RUN wget -O SPFG_4.10.0.zip https://sye.dk/sfpg/Single_File_PHP_Gallery_4.10.0.zip &&\
+RUN curl https://sye.dk/sfpg/Single_File_PHP_Gallery_4.10.0.zip --output SPFG_4.10.0.zip &&\
+# RUN wget -O SPFG_4.10.0.zip https://sye.dk/sfpg/Single_File_PHP_Gallery_4.10.0.zip &&\
 unzip -d /var/www/html SPFG_4.10.0.zip &&\
 mkdir -p /media/gallery &&\
 ln -s /var/www/html/gallery /media/gallery
